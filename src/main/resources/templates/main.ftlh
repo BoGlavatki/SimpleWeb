@@ -1,10 +1,8 @@
 <#import "Parts/common.ftlh" as c>
-<#import "Parts/login.ftlh" as l>
+
 
 
 <@c.page>
-    <@l.logout/>
-    <span><a href="/user">user list</a></span>
     <div>
         <form method="post" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="Введите сообщение" />

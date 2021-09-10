@@ -1,6 +1,6 @@
 
 <#macro login path isregisterForm>
-    <form action="${path}" method="post" xmlns="http://www.w3.org/1999/html">
+    <form action="${path}" method="post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> User Name :</label>
             <div class="col-sm-6">
@@ -18,7 +18,7 @@
         <#if !isregisterForm>
         <a href="/registration">Registration</a>
         </#if>
-        <button type="submit" class="btn btn-primary"/>Sign in</button>
+        <button type="submit" class="btn btn-primary"/><#if isregisterForm>Create<#else>Sign in</#if></button>
 
     </form>
 </#macro>
@@ -26,6 +26,6 @@
 <#macro logout>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <input type="submit" value="Sign Out"/>
+        <button type="submit" class="btn btn-primary"/> Sign out</button>
     </form>
 </#macro>
