@@ -1,5 +1,6 @@
 package com.example.servingwebcontent.controller;
 
+
 import com.example.servingwebcontent.domain.Message;
 import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.repos.MessageRepo;
@@ -15,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -24,13 +24,14 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @Value("${upload.path")
+    @Value("${upload.path}")
     private String uploadPath;
-    @GetMapping("/")
-    public String greeting(Map<String, Object> model){
 
-            return "greeting";
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
+        return "greeting";
     }
+
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Message> messages = messageRepo.findAll();
@@ -46,12 +47,13 @@ public class MainController {
 
         return "main";
     }
+
     @PostMapping("/main")
     public String add(
             @AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag, Map<String, Object> model,
-            @RequestParam("file")MultipartFile file
+            @RequestParam("file") MultipartFile file
     ) throws IOException {
         Message message = new Message(text, tag, user);
 
